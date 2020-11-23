@@ -1,0 +1,346 @@
+<!DOCTYPE html> 
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible"
+         content="IE=edge" />
+         <meta name="viewport"
+         content="width=device-width, 
+         initial-scale=1" />
+      <title>Admin | Upload APK</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="icon" href="icon.jpeg" type="image/gif" sizes="16x16">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.1/bootbox.min.js"></script>
+      <meta name="description"
+         content="" />
+      
+      <style> 
+        .nav {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background-color: #efeeee;
+            overflow: hidden!important
+        }
+
+        .nav {
+            width: 100vw;
+            height: 100px;
+            background-color: #efeeee;
+            box-shadow: 10px 10px 12px 0 rgba(0, 0, 0, .07);
+            border-radius: 0 0 10px 10px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 3rem;
+            list-style-type: none
+        }
+
+        .nav li.logo {
+            margin-right: auto;
+            font-family: Roboto, sans-serif;
+            font-size: 1.5rem;
+            color: #696969;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, .3), -2px -2px 4px #fff
+        }
+
+        .nav li:not(.logo) {
+            margin: 0 1rem;
+            padding: .5rem 1.5rem;
+            border: 2px solid rgba(255, 255, 255, .3);
+            box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, .1), -4px -4px 6px #fff;
+            border-radius: 10px;
+            font-family: Roboto, sans-serif;
+            cursor: pointer;
+            transition: color .2s ease-out, transform .2s ease-out;
+            color: #696969
+        }
+
+        .nav li:not(.logo):hover {
+            transform: scale(1.05);
+            box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, .1), -4px -4px 10px #fff
+        }
+
+        .nav li:not(.logo):focus {
+            outline: 0;
+            transform: scale(.95);
+            box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, .1), -4px -4px 10px #fff, 4px 4px 10px 0 rgba(0, 0, 0, .1) inset, -4px -4px 10px #fff inset
+        }
+
+        .nav li:not(.logo):focus,
+        .nav li:not(.logo):hover {
+            color: #004c99
+        }
+
+        .my-container {
+            padding: 3rem 4rem 0;
+            color: #999;
+            max-width: 100%;
+            font-family: Arial, sans-serif;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        section {
+            padding: 2%;
+            line-height: 150px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 3em;
+            text-align: center
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        .neumorphic {
+            box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, .2), -12px -12px 24px 0 rgba(255, 255, 255, .5);
+            font-size: 5rem;
+            width: 250px;
+            height: 250px;
+            border-radius: 40px;
+            overflow: hidden;
+            padding: 1.3rem;
+            display: flex
+        }
+
+        .neumorphic--pressed {
+            box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, .2), inset -6px -6px 10px 0 rgba(255, 255, 255, .5)
+        }
+
+        .variation1 {
+            background: linear-gradient(-45deg, rgba(0, 0, 0, .2), rgba(255, 255, 255, .3))
+        }
+
+        .variation1 span {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            overflow: hidden;
+            padding: .65rem;
+            box-shadow: inset 8px 8px 16px 0 rgba(0, 0, 0, .2), inset -8px -8px 16px 0 rgba(255, 255, 255, .4)
+        }
+
+        .variation1 strong {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            overflow: hidden;
+            background-color: #004c99;
+            color: #fff
+        }
+
+        .variation1.pressed strong {
+            background-color: #004c99
+        }
+
+        .variation2 {
+            justify-content: space-around;
+            align-items: center
+        }
+
+        .variation2 span {
+            display: block;
+            padding-bottom: 1.5rem;
+            position: relative;
+            font-size: 3rem
+        }
+
+        .variation2 span::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: block;
+            height: .3rem;
+            border-radius: 1rem;
+            width: 50%;
+            margin: 0 auto;
+            background-color: currentColor
+        }
+
+        .flex-container {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .form-div {
+            padding: 5%;
+            overflow: hidden;
+            font-family: Lato, sans-serif;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+        }
+
+        .form-container {
+            width: 430px;
+            padding: 20px 35px 15px 35px;
+            border-radius: 35px;
+            box-shadow: -6px -6px 6px rgba(255, 255, 255, .8), 6px 6px 6px rgba(0, 0, 0, .2)
+        }
+
+        .title {
+            text-align: center;
+            font-size: 28px;
+            padding-top: 24px;
+            letter-spacing: .5px;
+            color: black;
+            font-weight: 700;
+        }
+
+        .button {
+            outline: 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            height: 60px;
+            border-radius: 25px;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: Lato, sans-serif;
+            color: #fff;
+            text-align: center;
+            background: #004c99;
+            box-shadow: 7px 7px 8px #cbced1, -7px -7px 8px #fff;
+            transition: .5s
+        }
+
+        .button:hover {
+            background: #004c65;
+        }
+
+        .button:active {
+            background: #004c88
+        }
+      </style>
+   </head>
+   <body>
+      <ul class="nav">
+         <li class="logo link" id="#">Admin Console - Mobile</li>
+         <li tabindex="0"><i class="fa fa-cog" style="font-size:36px"></i></li>
+         <li tabindex="0" id="help_on_upload"><i class="fa fa-question-circle" style="font-size:36px"></i></li>
+      </ul>
+      <div class="form-div">
+      <div class="form-container">
+         <div class="title"><b>Upload App <i class="fa fa-android" style="color: green;" aria-hidden="true"></i></b></div>
+         <div>
+            <br>
+            
+         </div>
+         <form action="/uploadApk" enctype="multipart/form-data" method="POST">
+        
+            <div class="custom-file mb-3 file">
+               <input type="file" class="custom-file-input" name="apk_file" required>
+               <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+
+            <div class="custom-file mb-3">
+                <textarea class="form-control" placeholder="Describe feature or fixes of this Update..." name="update_description" required></textarea>
+                <br>
+            </div>
+
+            <input type="text" name="fileHash" id="fileHash" style="display: none;">
+
+            <div class="form-group">
+                <select class="form-control select-app-name" name="app_name"  required>
+                    <option disabled selected value> -- Select application name -- </option>
+                    <option value="nitrologger">Nitro Logger</option>
+                    <option value="opitblast">O-Pit Blast</option>
+                </select>
+            </div>
+
+            <button type="submit" class="button">Submit</button> 
+         </form>
+      </div>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/sha1-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/lib-typedarrays-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+        <script>
+        $(document).ready(function () {
+            function getHashOfFile() {
+                var reader = new FileReader(); //define a Reader
+                var file = $("#apk_file")[0].files[0]; //get the File object 
+                if (!file) {
+                    alert("no file selected");
+                    return;
+                } //check if user selected a file
+        
+                reader.onload = function (f) {
+                    var file_result = this.result; // this == reader, get the loaded file "result"
+                    var file_wordArr = CryptoJS.lib.WordArray.create(file_result); //convert blob to WordArray , see https://code.google.com/p/crypto-js/issues/detail?id=67
+                    var sha1_hash = CryptoJS.SHA1(file_wordArr); //calculate SHA1 hash
+                    
+                    
+                    $("#fileHash").val(sha1_hash) 
+                    $("#uploadForm").submit();
+                };
+                reader.readAsArrayBuffer(file); //read file as ArrayBuffer
+            }
+
+            $("#uploadForm").one('submit', function(e) {
+                e.preventDefault();
+                getHashOfFile()
+            });
+        });
+        </script>
+      <script>
+            $(".custom-file-input").on("change", function() {
+                var fileName = $(this).val().split("\\").pop()
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName)
+            })
+
+            $(".link").click(function() {
+                var select = $(this).attr("id")
+                window.location.replace(`/${select}`);
+            })
+
+            $('#help_on_upload').click(function() {
+                let helpInfo = `
+                    <h2><u>UPLOAD NOTES</u></h2><br>
+                    <ul>
+                        <li>Make sure file is well versioned.</li>
+                        <li>Make sure package is correct</li>
+                        <li>Make sure app is signed with JAR Signature and with certificate signed initial version of app.</li>
+                        
+                    </ul>
+                    <br>
+                    <p>For more information on this contact <b><i>HydraDet</i></b><br> <a href="#">Tell : +271 0000 000</a><p>
+                    `
+
+                bootbox.alert({
+                    message: helpInfo,
+                    className: 'bb-alternate-modal'
+                });
+            })
+      </script>
+   </body>
+</html>
