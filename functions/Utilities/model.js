@@ -1,6 +1,6 @@
 var admin = require("firebase-admin")
 require('dotenv').config()
-var serviceAccount = require("../config/hydralogger-updater-firebase-adminsdk-4yx73-e1ea24c843.json");
+var serviceAccount = require("../hydralogger-updater-firebase-adminsdk-4yx73-e1ea24c843.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: process.env.DATABASE_URL
@@ -13,11 +13,17 @@ const NITRO_LOGGER_DB_COLLECTION = process.env.NITRO_LOGGER_DB_COLLECTION,
         NITRO_LOGGER_APP_NAME  = process.env.NITRO_LOGGER_APP_NAME,
         NITRO_LOGGER_BUCKET_NAME = process.env.NITRO_LOGGER_BUCKET_NAME,
 
-        O_PITBLAST_DB_COLLECTION = process.env.O_PITBLAST_DB_COLLECTION
+        O_PITBLAST_DB_COLLECTION = process.env.O_PITBLAST_DB_COLLECTION,
         O_PITBLAST_PACKAGE = process.env.O_PITBLAST_PACKAGE,
         O_PITBLAST_BUCKET_URL = process.env.O_PITBLAST_BUCKET_URL,
-        O_PITBLAST_BUCKET_NAME = process.env.O_PITBLAST_BUCKET_NAME
+        O_PITBLAST_BUCKET_NAME = process.env.O_PITBLAST_BUCKET_NAME,
         O_PITBLAST_APP_NAME = process.env.O_PITBLAST_APP_NAME,
+        
+        HYDRA_LOGGER_DB_COLLECTION = process.env.HYDRA_LOGGER_DB_COLLECTION,
+        HYDRA_LOGGER_PACKAGE = process.env.HYDRA_LOGGER_PACKAGE,
+        HYDRA_LOGGER_BUCKET_URL = process.env.HYDRA_LOGGER_BUCKET_URL,
+        HYDRA_LOGGER_BUCKET_NAME = process.env.HYDRA_LOGGER_BUCKET_NAME,
+        HYDRA_LOGGER_APP_NAME = process.env.HYDRA_LOGGER_APP_NAME,
 
         UNKNOWN = process.env.UNKNOWN;
 
@@ -33,6 +39,15 @@ module.exports = {
                     appDetails.bucketUrl = NITRO_LOGGER_BUCKET_URL
                     appDetails.bucketName = NITRO_LOGGER_BUCKET_NAME
                     appDetails.appNameToUpdate = NITRO_LOGGER_APP_NAME
+                }
+                break
+
+                case "hydralogger": {
+                    appDetails.appCollectionRef = DB.collection(HYDRA_LOGGER_DB_COLLECTION)
+                    appDetails.appPackageName =  HYDRA_LOGGER_PACKAGE
+                    appDetails.bucketUrl = HYDRA_LOGGER_BUCKET_URL
+                    appDetails.bucketName = HYDRA_LOGGER_BUCKET_NAME
+                    appDetails.appNameToUpdate = HYDRA_LOGGER_APP_NAME
                 }
                 break
 

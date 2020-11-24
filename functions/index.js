@@ -6,7 +6,7 @@ const uploadHandler = require('./Utilities/upload.js')
 app.set("views",path.join(__dirname,"views")) 
 app.set("view engine","ejs") 
 require('dotenv').config()
-const PORT = process.env.PORT
+const PORT = 6000
     
 app.post('/uploadAPK', uploadHandler.uploadFile)
 
@@ -26,4 +26,4 @@ app.listen(PORT,function(error) {
     }
 }) 
 
-exports.app = functions.https.onRequest(app)
+exports.production = functions.https.onRequest(app)

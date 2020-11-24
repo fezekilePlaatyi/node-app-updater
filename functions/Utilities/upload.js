@@ -1,7 +1,7 @@
 require('dotenv').config()
 const {Storage} = require('@google-cloud/storage')
 const googleStorage = new Storage({
-    keyFilename: process.env.GOOGLE_SERVICE_ACCOUNT_FILE,
+    keyFilename: "./hydralogger-updater-firebase-adminsdk-4yx73-e1ea24c843.json",
     projectId: process.env.PROJECT_ID
 })
 const path = require("path") 
@@ -67,7 +67,7 @@ const updateAppDetailsOnDatabase = (
 
                 returnResponse(
                     response, 
-                    "Finished Proccessiong", 
+                    "Finished Uploading", 
                     "Successfully proccesed update. An email has been also sent to person set to receive Update Notification."
                 )
 

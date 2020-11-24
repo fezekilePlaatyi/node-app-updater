@@ -47,6 +47,7 @@ build/Release
 # Dependency directories
 node_modules/
 functions/node_modules/
+stagging/app_updater/cloud/node_modules/
 
 # Optional npm cache directory
 .npm

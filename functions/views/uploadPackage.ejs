@@ -254,7 +254,7 @@
             <br>
             
          </div>
-         <form action="/uploadApk" enctype="multipart/form-data" method="POST">
+         <form action="/production/uploadApk" enctype="multipart/form-data" method="POST">
         
             <div class="custom-file mb-3 file">
                <input type="file" class="custom-file-input" name="apk_file" required>
@@ -271,7 +271,8 @@
             <div class="form-group">
                 <select class="form-control select-app-name" name="app_name"  required>
                     <option disabled selected value> -- Select application name -- </option>
-                    <option value="nitrologger">Nitro Logger</option>
+                    <option value="hydralogger">HydraDet Logger</option>
+                    <option value="nitrologger">Nitro Sibir Logger</option>
                     <option value="opitblast">O-Pit Blast</option>
                 </select>
             </div>
@@ -320,7 +321,7 @@
 
             $(".link").click(function() {
                 var select = $(this).attr("id")
-                window.location.replace(`/${select}`);
+                window.location.replace(`/production/${select}`);
             })
 
             $('#help_on_upload').click(function() {
