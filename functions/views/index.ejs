@@ -6,6 +6,8 @@
         <title>Admin | Mobile Manager</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="icon" href="icon.jpeg" type="image/gif" sizes="16x16">        
+        <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
+        <script src="./auth.js"></script>
         <style>
            .nav {
                 margin: 0;
@@ -181,8 +183,8 @@
     <body>
         <ul class="nav">
             <li class="logo link" id="#">Admin Console - Mobile</li>
-            <li tabindex="0"><i class="fa fa-cog" style="font-size:36px"></i></li>
             <li tabindex="0"><i class="fa fa-question-circle" style="font-size:36px"></i></li>
+            <li tabindex="0" title="Sign Out" onclick="signOut()"><i class="fa fa-sign-out" style="font-size:36px"></i></li>
         </ul>
 
         <div class="my-container text-center">
